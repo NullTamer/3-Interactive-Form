@@ -112,7 +112,7 @@ const form = document.querySelector("form");
 const nameError = document.getElementById("name-hint");
 const emailError = document.getElementById("email-hint");
 const activityError = document.getElementById("activities-hint");
-const ccSelected = document.getElementById("payment")[1].value;
+const ccSelected = payWith.options[1].value;
 const ccError = document.getElementById("cc-hint");
 const cvvError = document.getElementById("cvv-hint");
 const zipError = document.getElementById("zip-hint");
@@ -143,7 +143,7 @@ form.addEventListener("submit", function (e) {
   } else {
     activityError.style.display = "none";
   }
-  if (ccSelected.value == "credit-card");
+  if (ccSelected == "credit-card");
   {
     if (/^\d{13,16}$/.test(ccNum) === false) {
       ccError.style.display = "block";
