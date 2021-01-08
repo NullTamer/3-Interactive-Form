@@ -71,7 +71,7 @@ const bitCoin = document.getElementById("bitcoin"); //bitcoin <div>
 payPal.style.display = "none";
 bitCoin.style.display = "none";
 
-payWith.children[1].setAttribute("selected", true); //sets default payment to CC
+payWith.children[0].setAttribute("selected", true); //sets default payment to none
 
 payWith.addEventListener("change", function (e) {
   const target = e.target.value;
@@ -104,30 +104,66 @@ payWith.addEventListener("change", function (e) {
 // The "CVV" <input type="text"> element
 // The <form> element
 
-const email = document.querySelector("#mail");
+const email = document.querySelector("#email");
 let zipCode = document.querySelector("#zip");
 let ccNum = document.querySelector("#cc-num");
 let cvv = document.querySelector("#cvv");
 const form = document.querySelector("form");
 const nameError = document.getElementById("name-hint");
 const emailError = document.getElementById("email-hint");
+const activityError = document.getElementById("activities-hint");
+const ccSelected = document.getElementById("payment")[1].value;
+const ccError = document.getElementById("cc-hint");
+const cvvError = document.getElementById("cvv-hint");
+const zipError = document.getElementById("zip-hint");
 
 form.addEventListener("submit", function (e) {
   let nameValue = nameX.value;
-  // let emailValue = email.value;
+  let emailValue = email.value;
 
   if (nameValue === null || nameValue === "") {
     nameError.style.display = "block";
     e.preventDefault();
+  } else {
+    nameError.style.display = "none";
   }
-  // if (
-  //   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-  //     emailValue
-  //   )
-  // ) {
-  //   emailError.style.display = "block";
-  //   e.preventDefault();
-  // }
+  if (
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      emailValue
+    ) === false
+  ) {
+    emailError.style.display = "block";
+    e.preventDefault();
+  } else {
+    emailError.style.display = "none";
+  }
+  if (totalCost === 0) {
+    activityError.style.display = "block";
+    e.preventDefault();
+  } else {
+    activityError.style.display = "none";
+  }
+  if (ccSelected.value == "credit-card");
+  {
+    if (/^\d{13,16}$/.test(ccNum) === false) {
+      ccError.style.display = "block";
+      e.preventDefault();
+    } else {
+      ccError.style.display = "none";
+    }
+    if (/^[0-9]{5}(?:-[0-9]{4})?$/.test(zipCode) === false) {
+      zipError.style.display = "block";
+      e.preventDefault();
+    } else {
+      zip.style.display = "none";
+    }
+    if (/^[0-9]{3}$/.test(cvv) === false) {
+      cvvError.style.display = "block";
+      e.preventDefault();
+    } else {
+      cvv.style.display = "none";
+    }
+  }
 });
 //   function testName(nameTest) {
 //     console.log(nameTest);
