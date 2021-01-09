@@ -128,7 +128,7 @@ form.addEventListener("submit", function (e) {
     nameError.parentElement.classList.remove("valid"); //displays valid symbol (same for every other line with altered variable forthwith)
     nameError.parentElement.classList.add("not-valid"); //displays invalid symbol
     nameError.parentElement.lastElementChild.style.display = "block"; //displays red border
-    e.preventDefault();
+    e.preventDefault(); //stops default operation "submit"
   } else {
     //if name is valid
     nameError.style.display = "none";
@@ -217,12 +217,15 @@ form.addEventListener("submit", function (e) {
 const checkBoxes = document.querySelectorAll(`input[type = 'checkbox']`);
 
 for (let i = 0; i < checkBoxes.length; i++) {
+  // loop over checkboxes
   let checkBox = checkBoxes[i];
   checkBox.addEventListener("focus", function () {
-    checkBox.parentElement.classList.add("focus");
+    //when focused
+    checkBox.parentElement.classList.add("focus"); //add focus class
   });
   checkBox.addEventListener("blur", function () {
-    checkBox.parentElement.classList.remove("focus");
+    //when unselected
+    checkBox.parentElement.classList.remove("focus"); //remove focus class
   });
 }
 
