@@ -1,4 +1,3 @@
-console.log("test");
 //3.
 let nameX = document.querySelector("#name");
 
@@ -113,7 +112,7 @@ const form = document.querySelector("form"); //form selector
 const nameError = document.getElementById("name-hint"); //error message for name
 const emailError = document.getElementById("email-hint"); //error message for email
 const activityError = document.getElementById("activities-hint"); //error message for activities
-const ccSelected = payWith.options[1].value; //value of paywith "credit-card"
+// const ccSelected = payWith.options[1].value; //value of paywith "credit-card"
 const ccError = document.getElementById("cc-hint"); //error message for credit card
 const zipError = document.getElementById("zip-hint"); //error message for zip
 const cvvError = document.getElementById("cvv-hint"); //error message for cvv
@@ -165,8 +164,7 @@ form.addEventListener("submit", function (e) {
     activityError.parentElement.classList.add("valid");
     activityError.parentElement.lastElementChild.style.display = "none";
   }
-  if (ccSelected === "credit-card");
-  {
+  if (payWith.value == "credit-card") {
     if (/^\d{13,16}$/.test(ccNum.value) === false) {
       //tests regEx for credit card, false condition
       ccError.style.display = "block";
